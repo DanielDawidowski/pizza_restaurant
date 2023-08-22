@@ -1,7 +1,8 @@
 import React, { FC, ReactElement } from "react";
+import Layout from "../../components/layout/Layout";
 
 const Menu: FC = (): ReactElement => {
-  return <div>Menu</div>;
+  return <Layout>Menu</Layout>;
 };
 
 export default Menu;

@@ -1,7 +1,8 @@
 import React, { FC, ReactElement } from "react";
+import Layout from "../../components/layout/Layout";
 
 const Checkout: FC = (): ReactElement => {
-  return <div>Checkout</div>;
+  return <Layout>Checkout</Layout>;
 };
 
 export default Checkout;

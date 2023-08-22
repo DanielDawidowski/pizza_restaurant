@@ -10,14 +10,19 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "plugins": ["react", "@typescript-eslint", "prettier", "react-hooks"],
   "rules": {
-    "semi": [2, "always"],
-    "space-before-function-paren": [0, { "anonymous": "always", "named": "always" }],
-    "camelcase": 0,
-    "no-return-assign": 0,
-    "react/react-in-jsx-scope": 0,
-    "react/display-name": 0
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"],
+    "@typescript-eslint/explicit-function-return-type": ["error", { "allowExpressions": true }],
+    "max-len": ["warn", { "code": 100, "ignoreComments": true, "ignoreUrls": true }],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "import/prefer-default-export": "off",
+    "react/prop-types": "off"
   },
   "settings": {
     "react": {
