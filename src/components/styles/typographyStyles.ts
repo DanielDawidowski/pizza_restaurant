@@ -22,7 +22,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+button {
   color: ${(props) => props.theme.black};
   font-family: "Righteous", cursive;
 }
