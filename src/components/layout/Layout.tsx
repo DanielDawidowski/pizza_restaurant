@@ -1,14 +1,27 @@
-import React, { FC, ReactElement } from "react";
+import React, { FC, ReactElement, useState } from "react";
+import { ThemeProvider } from "styled-components";
 import PropTypes from "prop-types";
-import Header from "../header/Header";
+import Header from "../navs/header/Header";
 import ILayout from "./Layout.interface";
+import { globalStyles } from "../styles/variables";
+import { LayoutStyles } from "./LayoutStyles";
+import { GlobalStyles } from "../styles/globalStyles";
+import { TypographyStyles } from "../styles/typographyStyles";
+import Navigation from "../navs/navigation/Navigation";
 
 const Layout: FC<ILayout> = ({ children }): ReactElement => {
+  const [toggleMenu, setToggleMenu] = useState<boolean>(false);
+
   return (
-    <div>
-      <Header />
-      <main>{children}</main>
-    </div>
+    <ThemeProvider theme={globalStyles}>
+      <GlobalStyles />
+      <TypographyStyles />
+      <LayoutStyles>
+        <Header toggleMenu={toggleMenu} setToggleMenu={setToggleMenu} />
+        <Navigation toggleMenu={toggleMenu} setToggleMenu={setToggleMenu} />
+        <main>{children}</main>
+      </LayoutStyles>
+    </ThemeProvider>
   );
 };
 

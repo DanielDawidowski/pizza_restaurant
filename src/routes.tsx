@@ -4,7 +4,7 @@ import { useRoutes } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Menu from "./pages/menu/Menu";
 import PizzaCreator from "./pages/pizza-creator/PizzaCreator";
-import Checkout from "./pages/checkout/Checkout";
+import Cart from "./pages/cart/Cart";
 
 export const AppRouter: FC = () => {
   const elements: RouteObject[] = [
@@ -21,8 +21,8 @@ export const AppRouter: FC = () => {
       element: <PizzaCreator />
     },
     {
-      path: "/checkout",
-      element: <Checkout />
+      path: "/cart",
+      element: <Cart />
     }
     // {
     //     path: "/:pathMatch(.*)*",
