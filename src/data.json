@@ -1,0 +1,92 @@
+[
+  {
+    "listNumber": 1,
+    "name": "Vegetarian",
+    "price": 8.99,
+    "discount": 7.99,
+    "kind": "vege",
+    "img": "https://i.ibb.co/ZWTTRZm/elczan-pizza-vegetarian-with-tomato-and-spinach-photo-from-top-ed4d65ba-4141-459f-9b6f-70dc5cb2d410.png",
+    "ingredients": ["spinach", "tomato", "onion", "cucumber"]
+  },
+  {
+    "listNumber": 2,
+    "name": "Funghi",
+    "price": 9.99,
+    "discount": 8.99,
+    "kind": "vege",
+    "img": "https://i.ibb.co/tznWvcx/elczan-pizza-with-becon-mushrooms-and-creamy-cheese-photo-from-39893a01-e72c-4e5a-8e62-258218bb174d.png",
+    "ingredients": ["champignon", "basil"]
+  },
+  {
+    "listNumber": 3,
+    "name": "Creamy Bacon",
+    "price": 10.99,
+    "discount": 9.99,
+    "kind": "",
+    "img": "https://i.ibb.co/sj5pf9t/elczan-pizza-with-bacon-and-creamy-cheese-photo-from-top-all-wi-3915e3c5-0fcb-47b5-bb49-9b32eabd721a.png",
+    "ingredients": ["bacon", "cream cheese", "onion"]
+  },
+  {
+    "listNumber": 4,
+    "name": "Meat Lover",
+    "price": 11.99,
+    "discount": 10.99,
+    "kind": "popular",
+    "img": "https://i.ibb.co/3sVq66f/elczan-pizza-with-bacon-small-meatballs-and-pepperoni-photo-fro-91a0ffe9-a69e-46f4-8b41-3e907316bbfc.png",
+    "ingredients": ["bacon", "ham", "pepperoni", "paprika"]
+  },
+  {
+    "listNumber": 5,
+    "name": "Farmer",
+    "price": 11.99,
+    "discount": 10.99,
+    "kind": "",
+    "img": "https://i.ibb.co/p20MVyB/elczan-pizza-with-bacon-sliced-pickled-cucumber-sliced-sausage-9326d86d-69ce-48c0-a26b-0b11dd8e7bec.png",
+    "ingredients": ["bacon", "ham", "cucumber", "onion"]
+  },
+  {
+    "listNumber": 6,
+    "name": "Hawaiian",
+    "price": 10.99,
+    "discount": 10.99,
+    "kind": "",
+    "img": "https://i.ibb.co/bdJZLz4/elczan-pizza-hawai-photo-from-top-all-width-visible-4k-ultra-re-75e74729-1935-44d3-9786-73dc83729e1e.png",
+    "ingredients": ["pineapple", "ham", "onion"]
+  },
+  {
+    "listNumber": 7,
+    "name": "Barbecue Mix Grill",
+    "price": 12.99,
+    "discount": 11.99,
+    "kind": "spicy",
+    "img": "https://i.ibb.co/7Rf73hp/elczan-barbecue-pizza-with-meat-red-onion-red-and-green-paprika-eb8a5b56-4885-4647-9781-16b369ffed59.png",
+    "ingredients": ["pepperoni", "tomato", "ham", "red onion", "basil", "barbecue sauce"]
+  },
+  {
+    "listNumber": 8,
+    "name": "Pepperoni",
+    "price": 11.99,
+    "discount": 10.99,
+    "kind": "spicy",
+    "img": "https://i.ibb.co/MSM18bN/elczan-pepperoni-pizza-with-basilium-photo-from-top-all-width-v-8b701bac-e6b3-483a-943a-29e0a2063c7f.png",
+    "ingredients": ["pepperoni", "basil"]
+  },
+  {
+    "listNumber": 9,
+    "name": "Funghi Ham",
+    "price": 11.99,
+    "discount": 10.99,
+    "kind": "popular",
+    "img": "https://i.ibb.co/SJbFD7W/elczan-pizza-with-mushrooms-and-ham-photo-from-top-all-width-vi-00891b08-7f36-4dcf-a2a6-1bb9f4c54b34.png",
+    "ingredients": ["champignon", "ham", "basil"]
+  },
+  {
+    "listNumber": 10,
+    "name": "Four Cheese",
+    "price": 11.99,
+    "discount": 10.99,
+    "kind": "vege",
+    "img": "https://i.ibb.co/cTRfstF/elczan-pizza-four-cheese-photo-from-top-all-width-visible-4k-ul-be410a24-b86f-4254-843e-90d3132b48af.png",
+    "ingredients": ["mozzarella", "cream cheese", "Parmigiano Reggiano", "Gorgonzola", "basil"]
+  }
+]

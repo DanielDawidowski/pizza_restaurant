@@ -23,6 +23,7 @@ h3,
 h4,
 h5,
 h6,
+span,
 button {
   color: ${(props) => props.theme.black};
   font-family: "Righteous", cursive;
@@ -76,7 +77,44 @@ p {
   }
 }
 
+.yellow-border {
+  text-shadow: -1px -1px 0 ${(props) => props.theme.yellow}, 1px -1px 0 ${(props) => props.theme.yellow}, -1px 1px 0 ${(
+    props
+  ) => props.theme.yellow}, 1px 1px 0 ${(props) => props.theme.yellow};
+  color: ${(props) => props.theme.black};
+}
 
+.black-border {
+  text-shadow: 1px 1px 1px ${(props) => props.theme.black}, -1px -1px 1px ${(props) =>
+    props.theme.black}, -1px -1px 1px ${(props) => props.theme.black}, 1px 1px 1px ${(props) => props.theme.black};
+  color: ${(props) => props.theme.white};
+}
+
+.white-border {
+  text-shadow: 1px 1px 1px ${(props) => props.theme.white}, -1px -1px 1px ${(props) =>
+    props.theme.white}, -1px -1px 1px ${(props) => props.theme.white}, 1px 1px 1px ${(props) => props.theme.white};
+  color: ${(props) => props.theme.black};
+}
+
+.red-border {
+  text-shadow: 1px 1px 1px ${(props) => props.theme.red}, -1px -1px 1px ${(props) => props.theme.red}, -1px -1px 1px ${(
+    props
+  ) => props.theme.red}, 1px 1px 1px ${(props) => props.theme.red};
+  color: ${(props) => props.theme.yellow};
+}
+
+.green-border {
+  text-shadow: 1px 1px 1px ${(props) => props.theme.green}, -1px -1px 1px ${(props) =>
+    props.theme.green}, -1px -1px 1px ${(props) => props.theme.green}, 1px 1px 1px ${(props) => props.theme.green};
+  color: ${(props) => props.theme.white};
+}
+
+.yellow-border-red {
+  text-shadow: -1px -1px 0 ${(props) => props.theme.yellow}, 1px -1px 0 ${(props) => props.theme.yellow}, -1px 1px 0 ${(
+    props
+  ) => props.theme.yellow}, 1px 1px 0 ${(props) => props.theme.yellow};
+  color: ${(props) => props.theme.red};
+}
 
 
 `;

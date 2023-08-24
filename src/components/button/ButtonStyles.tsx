@@ -19,9 +19,7 @@ const COLOR = {
 };
 
 const DISABLED = css`
-  cursor: not-allowed;
-  background: #d4d4d4;
-  color: #f5f5f5;
+  cursor: none;
 `;
 
 export const ButtonStyles = styled(motion.button)<IButton>`
@@ -32,7 +30,6 @@ export const ButtonStyles = styled(motion.button)<IButton>`
   font-weight: 500;
   outline: none;
   transition: all 0.2s;
-  min-width: 100px;
 
   ${(props) => props.color && COLOR[props.color]}
   ${(props) => props.disabled && DISABLED}

@@ -31,6 +31,9 @@ export const HomeStyles = styled(motion.section)`
     display: flex;
     justify-content: center;
     align-items: center;
+    button {
+      min-width: 100px;
+    }
     button:first-child {
       margin-right: ${(props) => props.theme.size1};
     }
