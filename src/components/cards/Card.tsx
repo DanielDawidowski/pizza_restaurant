@@ -14,7 +14,7 @@ import VegeSVG from "../../assets/SVG/vege";
 
 const Card: FC<ICard> = (props): ReactElement => {
   const [toggle, setToggle] = useState(false);
-  const { name, listNumber, ingredients, price, size, kind, img, type } = props;
+  const { name, listNumber, ingredients, kind, img, type } = props;
 
   const handleToggle = (): void => {
     setToggle(!toggle);

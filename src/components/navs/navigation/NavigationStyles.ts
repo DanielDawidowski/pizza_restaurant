@@ -52,8 +52,7 @@ export const NavStyles = styled(motion.div)`
       border: 1px solid ${(props) => props.theme.black_opacity};
       border-radius: 8px;
       background: ${(props) => props.theme.yellow_light_1};
-      padding: ${(props) => props.theme.size1} ${(props) => props.theme.size2} ${(props) => props.theme.size5}
-        ${(props) => props.theme.size2};
+      padding: ${(props) => props.theme.size4} ${(props) => props.theme.size2};
       li {
         margin: ${(props) => props.theme.size4} ${(props) => props.theme.size1};
         padding: ${(props) => props.theme.size3};

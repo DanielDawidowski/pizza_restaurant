@@ -69,6 +69,16 @@ h4 {
   }
 }
 
+h5 {
+  font-size: ${(props) => props.theme.size2};
+  @media (min-width: ${(props) => props.theme.breakpoint_medium}) {
+    font-size: ${(props) => props.theme.size3};
+  }
+  @media (min-width: ${(props) => props.theme.breakpoint_large}) {
+    font-size: ${(props) => props.theme.size4};
+  }
+}
+
 p {
   letter-spacing: 0.05em;
   line-height: 1.8;
@@ -113,6 +123,13 @@ p {
   text-shadow: -1px -1px 0 ${(props) => props.theme.yellow}, 1px -1px 0 ${(props) => props.theme.yellow}, -1px 1px 0 ${(
     props
   ) => props.theme.yellow}, 1px 1px 0 ${(props) => props.theme.yellow};
+  color: ${(props) => props.theme.red};
+}
+
+.white-border-red {
+  text-shadow: -1px -1px 0 ${(props) => props.theme.white}, 1px -1px 0 ${(props) => props.theme.white}, -1px 1px 0 ${(
+    props
+  ) => props.theme.white}, 1px 1px 0 ${(props) => props.theme.white};
   color: ${(props) => props.theme.red};
 }
 

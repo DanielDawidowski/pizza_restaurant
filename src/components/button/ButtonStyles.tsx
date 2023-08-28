@@ -13,8 +13,10 @@ const COLOR = {
     border: 2px dashed ${(props) => props.theme.black};
   `,
   RED: css`
-    color: ${(props) => props.theme.black};
+    color: ${(props) => props.theme.white};
     background: ${(props) => props.theme.red};
+    border: 2px dashed ${(props) => props.theme.white};
+    border-radius: 8px;
   `
 };
 

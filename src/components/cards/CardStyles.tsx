@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 import ICard from "./Card.interface";
 import CardBG from "../../assets/Images/card-bg.jpg";
+import ICardDiscount from "./Card.interface";
 
 const TYPE = {
   DISCOUNT: css`
@@ -206,15 +207,119 @@ const TYPE = {
     }
   `,
   SHOP: css`
-    background: ${(props) => props.theme.red};
+    background: ${(props) => props.theme.white};
     color: ${(props) => props.theme.black};
+    display: flex;
+    width: 100%;
+    .card__left {
+      position: relative;
+      width: 30%;
+
+      margin-right: ${(props) => props.theme.size1};
+      &--ribbon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 20px;
+        height: 30px;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% calc(100% - 8px), 0% 100%, 0% 0%);
+        background: ${(props) => props.theme.red};
+        border-right: 2px solid ${(props) => props.theme.yellow};
+        border-left: 2px solid ${(props) => props.theme.yellow};
+      }
+      &--image {
+        img {
+          width: 100px;
+          height: 100px;
+          margin-top: ${(props) => props.theme.size4};
+        }
+      }
+    }
+    .card__right {
+      width: 70%;
+      &--header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: ${(props) => props.theme.size1} ${(props) => props.theme.size1} 0 ${(props) => props.theme.size1};
+        &__title {
+          h4 {
+            text-transform: lowercase;
+            letter-spacing: 0.5px;
+          }
+          h5 {
+            color: ${(props) => props.theme.grey};
+            font-size: 10px;
+          }
+        }
+        &__bin {
+          background: ${(props) => props.theme.red_light};
+          border-radius: 4px;
+          padding: 4px;
+          display: grid;
+          place-items: center;
+          margin-right: ${(props) => props.theme.size1};
+          svg {
+            width: 15px;
+            height: 15px;
+          }
+        }
+      }
+      &--content {
+        display: flex;
+        flex-wrap: wrap;
+        margin: ${(props) => props.theme.size2} 0;
+
+        &__ingredients {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 4px;
+
+          svg {
+            width: 15px;
+            height: 15px;
+            margin: 0 4px;
+          }
+
+          h6 {
+            color: ${(props) => props.theme.black_opacity};
+            font-size: 10px;
+            letter-spacing: 0.5px;
+          }
+        }
+      }
+
+      &--footer {
+        display: flex;
+        justify-content: flex-end;
+        &--content {
+          display: flex;
+          margin: ${(props) => props.theme.size1};
+        }
+        &--kind {
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          span {
+            margin-right: ${(props) => props.theme.size2};
+          }
+          svg {
+            width: 30px;
+            height: 30px;
+            margin-right: ${(props) => props.theme.size3};
+          }
+        }
+      }
+    }
   `
 };
 
-export const CardStyles = styled(motion.div)<ICard>`
+export const CardStyles = styled(motion.div)<ICard | ICardDiscount>`
   position: relative;
   border-radius: 18px;
   overflow: hidden;
   margin: ${(props) => props.theme.size1} 0;
+
   ${(props) => props.type && TYPE[props.type]}
 `;
