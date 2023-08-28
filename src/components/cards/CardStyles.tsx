@@ -115,7 +115,7 @@ const TYPE = {
       &--discription {
         width: 50%;
         margin: ${(props) => props.theme.size1} ${(props) => props.theme.size1} 0 ${(props) => props.theme.size1};
-        svg {
+        .qoutes svg {
           margin: ${(props) => props.theme.size3} 0 ${(props) => props.theme.size1} 0;
         }
 
@@ -138,6 +138,7 @@ const TYPE = {
       &--ingredients {
         display: flex;
         flex-wrap: wrap;
+        min-height: 60px;
         h6 {
           margin-right: ${(props) => props.theme.size1};
           line-height: 1.5;
@@ -172,7 +173,7 @@ const TYPE = {
         margin: ${(props) => props.theme.size1} 0;
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-end;
         width: 100%;
 
         &--btn {
@@ -187,7 +188,6 @@ const TYPE = {
           svg {
             width: 20px;
             height: 20px;
-            margin-top: 8px;
           }
         }
         &--kind {
@@ -196,7 +196,6 @@ const TYPE = {
           align-items: flex-end;
           span {
             margin-right: ${(props) => props.theme.size1};
-            margin-bottom: ${(props) => props.theme.size2};
           }
           svg {
             width: 60px;

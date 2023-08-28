@@ -8,6 +8,8 @@ import Logo from "../../../assets/SVG/Logo";
 import IHamburger from "../hamburger/Hamburger.interface";
 import { Link } from "react-router-dom";
 import BasketSVG from "../../../assets/SVG/basket";
+import ListSVG from "../../../assets/SVG/list";
+import PizzaSVG from "../../../assets/SVG/pizza";
 
 const Navigation: FC<IHamburger> = (props): ReactElement => {
   const { toggleMenu, setToggleMenu } = props;
@@ -23,6 +25,7 @@ const Navigation: FC<IHamburger> = (props): ReactElement => {
               ease: [0.6, 0.05, -0.01, 0.9]
             }}
             exit={{ x: "-100%" }}
+            className="nav"
           >
             <nav>
               <div className="nav__logo">
@@ -42,6 +45,26 @@ const Navigation: FC<IHamburger> = (props): ReactElement => {
                 </li>
               </ul>
             </nav>
+            <div className="nav__body">
+              <ul>
+                <li>
+                  <Link to="/menu">
+                    <span>
+                      <ListSVG />
+                    </span>
+                    <h3>Menu List</h3>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/create-pizza">
+                    <span>
+                      <PizzaSVG />
+                    </span>
+                    <h3>Pizza Creator</h3>
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </NavStyles>
         </>
       )}

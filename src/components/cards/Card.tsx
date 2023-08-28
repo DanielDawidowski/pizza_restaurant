@@ -32,7 +32,9 @@ const Card: FC<ICard> = (props): ReactElement => {
           <DotsSVG />
         </div>
         <div className="card__body--discription">
-          <QoutesSVG />
+          <div className="qoutes">
+            <QoutesSVG />
+          </div>
           <div className="card__body--ingredients">
             {ingredients && ingredients.map((item, i) => <h6 key={i}>{item},</h6>)}
           </div>
@@ -57,7 +59,6 @@ const Card: FC<ICard> = (props): ReactElement => {
             {kind === "vege" && (
               <div className="card__body--footer--kind">
                 <span className="green-border">Vege</span>
-
                 <VegeSVG />
               </div>
             )}
