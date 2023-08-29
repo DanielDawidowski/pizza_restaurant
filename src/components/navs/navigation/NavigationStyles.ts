@@ -45,7 +45,7 @@ export const NavStyles = styled(motion.div)`
       width: 120%;
       height: 120%;
       z-index: -1;
-      background: url(${NavBG}) -50% 75% no-repeat;
+      background: url(${NavBG}) 25% 75% no-repeat;
     }
     ul {
       margin: ${(props) => props.theme.size1};

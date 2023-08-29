@@ -133,5 +133,9 @@ p {
   color: ${(props) => props.theme.red};
 }
 
+.red {
+  color: ${(props) => props.theme.red};
+}
+
 
 `;

@@ -4,6 +4,7 @@ export const globalStyles = {
   breakpoint_small: "960px",
   breakpoint_xsmall: "480px",
   white: "#F6F1F0",
+  white_2: "#FFFFFF",
   white_opacity: "rgba(255, 255, 255, 0.7)",
   black: "#2A262D",
   black_opacity: "rgba(0, 0, 0, 0.7)",
