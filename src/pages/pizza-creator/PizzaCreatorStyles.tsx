@@ -34,7 +34,7 @@ export const PizzaCreatorStyles = styled(motion.section)`
           display: grid;
           &--left {
           }
-          &--right {
+          &--bottom {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -44,11 +44,11 @@ export const PizzaCreatorStyles = styled(motion.section)`
               border-radius: 8px;
               border: 1px solid ${(props) => props.theme.black};
               font-size: ${(props) => props.theme.size2};
-
               &:nth-child(1),
               &:nth-child(3) {
                 border-radius: 8px;
                 width: 35%;
+                cursor: pointer;
               }
 
               &:nth-child(1) {
@@ -65,6 +65,9 @@ export const PizzaCreatorStyles = styled(motion.section)`
               &:nth-child(3) {
                 background: ${(props) => props.theme.red_light};
               }
+            }
+            li.disabled {
+              background: ${(props) => props.theme.grey};
             }
           }
         }
