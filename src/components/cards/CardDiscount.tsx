@@ -5,9 +5,9 @@ import { CardStyles } from "./CardStyles";
 import Image from "../image/Image";
 import { ButtonColor } from "../button/Button.interface";
 import Button from "../button/Button";
-import ICardDiscount from "./Card.interface";
+import ICard from "./Card.interface";
 
-const CardDiscount: FC<ICardDiscount> = (props): ReactElement => {
+const CardDiscount: FC<ICard> = (props): ReactElement => {
   const { name, listNumber, price, img, title, type } = props;
 
   return (

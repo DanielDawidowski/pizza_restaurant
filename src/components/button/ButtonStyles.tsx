@@ -21,7 +21,7 @@ const COLOR = {
 };
 
 const DISABLED = css`
-  cursor: none;
+  cursor: not-allowed;
 `;
 
 export const ButtonStyles = styled(motion.button)<IButton>`

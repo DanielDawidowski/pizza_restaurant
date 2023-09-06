@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import ICard from "./Card.interface";
 import { PizzaSize, TypeCard } from "./Card.interface";
 import Image from "../image/Image";
-
 import { CardStyles } from "./CardStyles";
 import BinSVG from "../../assets/SVG/bin";
 import CheckSVG from "../../assets/SVG/check";
@@ -12,9 +11,13 @@ import StarSVG from "../../assets/SVG/star";
 import PepperSVG from "../../assets/SVG/pepper";
 import Button from "../button/Button";
 import { ButtonColor } from "../button/Button.interface";
+import { useAppDispatch } from "../../redux-toolkit/hooks";
+import { removePizzaFromCart } from "../../redux-toolkit/reducers/cart";
 
 const CardShopping: FC<ICard> = (props): ReactElement => {
-  const { name, size, price, ingredients, kind, img, type } = props;
+  const { name, size, price, id, ingredients, kind, img, type } = props;
+
+  const dispatch = useAppDispatch();
 
   return (
     <CardStyles type={type}>
@@ -31,7 +34,7 @@ const CardShopping: FC<ICard> = (props): ReactElement => {
             <h5>{size} - 24 cm</h5>
           </div>
 
-          <div className="card__right--header__bin">
+          <div className="card__right--header__bin" onClick={() => dispatch(removePizzaFromCart(id as string))}>
             <BinSVG />
           </div>
         </div>
@@ -75,9 +78,11 @@ const CardShopping: FC<ICard> = (props): ReactElement => {
 };
 
 CardShopping.propTypes = {
+  id: PropTypes.string,
   name: PropTypes.string,
   ingredients: PropTypes.array,
   price: PropTypes.number,
+  listNumber: PropTypes.number,
   size: PropTypes.oneOf([PizzaSize.small, PizzaSize.medium, PizzaSize.large]),
   img: PropTypes.string,
   kind: PropTypes.string,

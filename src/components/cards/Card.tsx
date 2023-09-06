@@ -11,10 +11,32 @@ import CartSVG from "../../assets/SVG/cart";
 import PepperSVG from "../../assets/SVG/pepper";
 import StarSVG from "../../assets/SVG/star";
 import VegeSVG from "../../assets/SVG/vege";
+import { useAppDispatch } from "../../redux-toolkit/hooks";
+import { addPizzaToCart } from "../../redux-toolkit/reducers/cart";
 
 const Card: FC<ICard> = (props): ReactElement => {
   const [toggle, setToggle] = useState(false);
-  const { name, listNumber, ingredients, kind, img, type } = props;
+  // const [localStorage, setLocalStorage] = useLocalStorage("cart", list);
+
+  const { id, name, listNumber, ingredients, kind, img, type, price } = props;
+
+  const item: ICard = {
+    id,
+    name,
+    listNumber,
+    ingredients,
+    kind,
+    img,
+    size: PizzaSize.small,
+    price
+  };
+
+  const dispatch = useAppDispatch();
+
+  const addToCart = (el: ICard): void => {
+    dispatch(addPizzaToCart(el));
+    // setLocalStorage([{ name, listNumber, ingredients, kind, img, type }]);
+  };
 
   const handleToggle = (): void => {
     setToggle(!toggle);
@@ -36,7 +58,7 @@ const Card: FC<ICard> = (props): ReactElement => {
             <QoutesSVG />
           </div>
           <div className="card__body--ingredients">
-            {ingredients && ingredients.map((item, i) => <h6 key={i}>{item},</h6>)}
+            {ingredients && ingredients.map((el, i) => <h6 key={i}>{el},</h6>)}
           </div>
           {toggle && (
             <div className="card__body--select">
@@ -54,8 +76,15 @@ const Card: FC<ICard> = (props): ReactElement => {
               </div>
             </div>
           )}
-          <div className="card__body--footer" onClick={handleToggle}>
-            <div className="card__body--footer--btn">{toggle ? <CartSVG /> : <EyeSVG />}</div>
+          <div className="card__body--footer">
+            <div className="card__body--footer--btn" onClick={handleToggle}>
+              <EyeSVG />
+            </div>
+
+            <div className="card__body--footer--btn" onClick={() => addToCart(item)}>
+              <CartSVG />
+            </div>
+
             {kind === "vege" && (
               <div className="card__body--footer--kind">
                 <span className="green-border">Vege</span>
@@ -82,6 +111,7 @@ const Card: FC<ICard> = (props): ReactElement => {
 };
 
 Card.propTypes = {
+  id: PropTypes.string,
   name: PropTypes.string,
   listNumber: PropTypes.number,
   ingredients: PropTypes.array,

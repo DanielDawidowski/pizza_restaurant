@@ -7,7 +7,7 @@ import { emitIngredientIcon } from "../../utils/emitIngredientIcon";
 import { emitIngredientName } from "../../utils/emitIngredientName";
 
 const Ingredient: FC<IIngredient> = (props): ReactElement => {
-  const { name = IngredientName.paprika, price, icon = false, img, onPizza, total } = props;
+  const { name = IngredientName.paprika, icon = false } = props;
 
   return (
     <>
@@ -35,11 +35,7 @@ Ingredient.propTypes = {
     IngredientName.tomato,
     IngredientName.bacon
   ]),
-  price: PropTypes.number,
-  img: PropTypes.string,
-  icon: PropTypes.bool,
-  onPizza: PropTypes.bool,
-  total: PropTypes.number
+  icon: PropTypes.bool
 };
 
 export default Ingredient;

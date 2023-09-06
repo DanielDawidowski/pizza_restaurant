@@ -9,6 +9,25 @@ export const CartStyles = styled(motion.section)`
       margin: ${(props) => props.theme.size3} ${(props) => props.theme.size1};
       padding: ${(props) => props.theme.size3} ${(props) => props.theme.size1};
       border-radius: 18px;
+      &--item {
+        &__empty {
+          display: grid;
+          place-items: center;
+          background-color: ${(props) => props.theme.white};
+          border: 1px solid ${(props) => props.theme.black_opacity};
+          border-radius: 18px;
+          margin: ${(props) => props.theme.size3};
+
+          h2 {
+            margin: ${(props) => props.theme.size3};
+          }
+          svg {
+            margin: ${(props) => props.theme.size3};
+            width: 100px;
+            height: 100px;
+          }
+        }
+      }
     }
     &__total {
       display: flex;

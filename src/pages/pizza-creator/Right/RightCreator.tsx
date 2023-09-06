@@ -4,6 +4,8 @@ import SizeSelect, { SelectNode } from "./SizeSelect";
 import { useAppSelector } from "../../../redux-toolkit/hooks";
 import { IngredientName } from "../../../components/ingredient/Ingredient.interface";
 import { IngredientProps } from "../../../redux-toolkit/reducers/ingredient";
+import CartSVG from "../../../assets/SVG/cart";
+import Button from "../../../components/button/Button";
 
 const selectData: SelectNode[] = [
   {
@@ -28,8 +30,8 @@ const selectData: SelectNode[] = [
 
 const RightCreator: FC = (): ReactElement => {
   const [ingName, setIngName] = useState<string[]>([]);
-
-  const { ingredient } = useAppSelector((state) => state.ingredients);
+  const [sizePrice, setSizePrice] = useState<number>(0);
+  const { ingredient, price } = useAppSelector((state) => state.ingredients);
 
   const showIngredient = useCallback((): void => {
     const list: string[] = [];
@@ -53,7 +55,7 @@ const RightCreator: FC = (): ReactElement => {
   return (
     <div className="creator__right">
       <div className="creator__right--inner">
-        <SizeSelect data={selectData} />
+        <SizeSelect data={selectData} setSizePrice={setSizePrice} />
         <div className="creator__right--pizza">
           <PizzaWithPlateSVG
             tomato={ingName.includes(IngredientName.tomato)}
@@ -67,8 +69,9 @@ const RightCreator: FC = (): ReactElement => {
         </div>
         <div className="creator__right--total">
           <h3>
-            Total: <span className="black-border">30$</span>
+            Total: <span className="black-border">{price + sizePrice}$</span>
           </h3>
+          <Button disabled={!sizePrice || !ingName.length}>+</Button>
         </div>
       </div>
     </div>

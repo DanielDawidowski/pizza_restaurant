@@ -125,8 +125,8 @@ export const PizzaCreatorStyles = styled(motion.section)`
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        flex-direction: column;
         margin-top: ${(props) => props.theme.size6};
-
         margin-right: ${(props) => props.theme.size1};
         h3 {
           background: ${(props) => props.theme.yellow};
@@ -136,6 +136,17 @@ export const PizzaCreatorStyles = styled(motion.section)`
           span {
             color: ${(props) => props.theme.white};
           }
+        }
+        button {
+          margin: ${(props) => props.theme.size1};
+          border-radius: 8px;
+          font-size: ${(props) => props.theme.size4};
+          color: ${(props) => props.theme.yellow};
+          text-shadow:
+            -1px -1px 0 ${(props) => props.theme.red},
+            1px -1px 0 ${(props) => props.theme.red},
+            -1px 1px 0 ${(props) => props.theme.red},
+            1px 1px 0 ${(props) => props.theme.red};
         }
       }
     }

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { NavStyles } from "./NavigationStyles";
 import Hamburger from "../hamburger/Hamburger";
 import Logo from "../../../assets/SVG/Logo";
-
+import { useAppSelector } from "../../../redux-toolkit/hooks";
 import IHamburger from "../hamburger/Hamburger.interface";
 import { Link } from "react-router-dom";
 import BasketSVG from "../../../assets/SVG/basket";
@@ -12,6 +12,7 @@ import ListSVG from "../../../assets/SVG/list";
 import PizzaSVG from "../../../assets/SVG/pizza";
 
 const Navigation: FC<IHamburger> = (props): ReactElement => {
+  const { items } = useAppSelector((state) => state.cart);
   const { toggleMenu, setToggleMenu } = props;
   return (
     <AnimatePresence>
@@ -37,7 +38,12 @@ const Navigation: FC<IHamburger> = (props): ReactElement => {
               <ul>
                 <li>
                   <Link to="/cart">
-                    <BasketSVG />
+                    <div className="header__cart">
+                      <div className="header__cart--icon">
+                        <BasketSVG />
+                        <span>{items.length}</span>
+                      </div>
+                    </div>
                   </Link>
                 </li>
                 <li>

@@ -8,8 +8,8 @@ import { DividerColor } from "../../components/divider/Divider.interface";
 import CardDiscount from "../../components/cards/CardDiscount";
 import data from "../../data.json";
 import ICard, { TypeCard } from "../../components/cards/Card.interface";
-import ICardDiscount from "../../components/cards/Card.interface";
 import Card from "../../components/cards/Card";
+import { generateString } from "../../utils/utils.service";
 
 const Menu: FC = (): ReactElement => {
   return (
@@ -25,7 +25,7 @@ const Menu: FC = (): ReactElement => {
             data
               .slice(0, 2)
               .sort(() => 0.5 - Math.random())
-              .map((item: ICardDiscount, i) => (
+              .map((item: ICard, i) => (
                 <CardDiscount key={i} img={item.img} type={TypeCard.discount} price={item.price} />
               ))}
         </div>
@@ -35,9 +35,11 @@ const Menu: FC = (): ReactElement => {
             data.map((item: ICard, i) => (
               <Card
                 key={i}
+                id={generateString(10)}
                 name={item.name}
                 listNumber={item.listNumber}
                 img={item.img}
+                price={item.price}
                 ingredients={item.ingredients}
                 type={TypeCard.list}
                 kind={item.kind}

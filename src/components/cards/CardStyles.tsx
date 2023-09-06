@@ -2,7 +2,6 @@ import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 import ICard from "./Card.interface";
 import CardBG from "../../assets/Images/card-bg.jpg";
-import ICardDiscount from "./Card.interface";
 
 const TYPE = {
   DISCOUNT: css`
@@ -186,6 +185,7 @@ const TYPE = {
           align-items: center;
           width: 40px;
           height: 40px;
+          margin-right: 2px;
           svg {
             width: 20px;
             height: 20px;
@@ -315,7 +315,7 @@ const TYPE = {
   `
 };
 
-export const CardStyles = styled(motion.div)<ICard | ICardDiscount>`
+export const CardStyles = styled(motion.div)<ICard>`
   position: relative;
   border-radius: 18px;
   overflow: hidden;

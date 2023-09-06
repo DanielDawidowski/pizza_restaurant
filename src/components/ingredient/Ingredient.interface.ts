@@ -21,7 +21,4 @@ export interface IIngredient {
   name?: IngredientNames;
   img?: string;
   icon?: boolean;
-  price?: number;
-  onPizza?: boolean;
-  total?: number;
 }

@@ -4,16 +4,19 @@ export function discountPrice(price: number): number {
   return price * 2;
 }
 
-export function incrementIngredients(arr: string[]): IngredientProps[] {
+export function incrementIngredient(arr: string[]): IngredientProps[] {
   const ingredientsCount: { [key: string]: number } = {};
   const ingredientDisabled: { [key: string]: boolean } = {};
+  const ingredientPrice: { [key: string]: number } = {};
 
   // Count the occurrences of each fruit
   for (const ing of arr) {
     if (ingredientsCount[ing]) {
       ingredientsCount[ing]++;
+      ingredientPrice[ing]++;
     } else {
       ingredientsCount[ing] = 1;
+      ingredientPrice[ing] = 1;
     }
   }
 
@@ -28,7 +31,12 @@ export function incrementIngredients(arr: string[]): IngredientProps[] {
   // Convert the count map into an array of objects
   const total: IngredientProps[] = [];
   for (const name in ingredientsCount) {
-    total.push({ name, count: ingredientsCount[name], disabled: ingredientDisabled[name] });
+    total.push({
+      name,
+      count: ingredientsCount[name],
+      disabled: ingredientDisabled[name],
+      price: ingredientPrice[name] * 3
+    });
   }
   return total;
 }
@@ -54,13 +62,16 @@ export const countTotalIngredients = (arr: IngredientProps[]): number => {
   return arr.reduce((acc, curr) => acc + curr.count, 0);
 };
 
-export const disableIngredients = (arr: IngredientProps[]): IngredientProps[] => {
-  for (const ing of arr) {
-    if (ing.count > 1) {
-      ing.disabled = true;
-    } else {
-      ing.disabled = false;
-    }
+export const countTotalPrice = (arr: IngredientProps[]): number => {
+  return arr.reduce((acc, curr) => acc + curr.price, 0);
+};
+
+export const generateString = (length: number): string => {
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = " ";
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
-  return arr;
+  return result;
 };

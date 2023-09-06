@@ -30,21 +30,14 @@ export type TypeCards = TypeCard.discount | TypeCard.list | TypeCard.shop;
 
 export type PizzaKinds = PizzaKind.popular | PizzaKind.vege | PizzaKind.spicy;
 
-export default interface ICardDiscount {
-  name?: string;
-  listNumber?: number;
-  price?: number;
-  img?: string;
-  title?: string;
-  type?: TypeCards;
-}
-
 export default interface ICard {
+  id?: string;
   name?: string;
   listNumber?: number;
   ingredients?: string[];
   price?: number;
   size?: PizzaSizes;
+  title?: string;
   kind?: string;
   img?: string;
   type?: TypeCards;

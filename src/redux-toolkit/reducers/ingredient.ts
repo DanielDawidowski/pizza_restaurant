@@ -1,25 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import _ from "lodash";
-import type { RootState } from "../store";
-import { incrementIngredients, countTotalIngredients, decrementIngredient } from "../../utils/utils.service";
+import { incrementIngredient, countTotalIngredients, decrementIngredient } from "../../utils/utils.service";
 
 export interface IngredientProps {
   name: string;
   count: number;
+  price: number;
   disabled?: boolean;
 }
 
 interface IngredientsState {
   ingredient: IngredientProps[];
   total: number;
-  onPizza?: boolean;
+  price: number;
 }
 
 const initialState: IngredientsState = {
-  ingredient: [{ name: "", count: 0, disabled: false }],
+  ingredient: [{ name: "", count: 0, price: 0, disabled: false }],
   total: 0,
-  onPizza: false
+  price: 0
 };
 
 const list: string[] = [];
@@ -31,14 +30,16 @@ export const ingredientSlice = createSlice({
   reducers: {
     increment: (state, action: PayloadAction<string>) => {
       list.push(action.payload);
-      state.ingredient = incrementIngredients(list);
+      state.ingredient = incrementIngredient(list);
       state.total = countTotalIngredients(state.ingredient);
-      console.log("list: ", list);
+      state.price = state.total * 3;
+      console.log("list: ", state.ingredient);
     },
     decrement: (state, action: PayloadAction<string>) => {
       state.ingredient = decrementIngredient(list, action.payload, state.ingredient);
       state.total = countTotalIngredients(state.ingredient);
-      console.log("list: ", list);
+      state.price = state.total * 3;
+      console.log("list: ", state.ingredient);
     },
 
     // Use the PayloadAction type to declare the contents of `action.payload`
@@ -49,9 +50,5 @@ export const ingredientSlice = createSlice({
 });
 
 export const { increment, decrement, incrementByAmount } = ingredientSlice.actions;
-
-export const selectTotal = (state: RootState): number => {
-  return state.ingredients.total;
-};
 
 export default ingredientSlice.reducer;

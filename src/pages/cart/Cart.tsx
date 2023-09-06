@@ -1,29 +1,44 @@
-import React, { FC, ReactElement } from "react";
+import React, { FC, ReactElement, useEffect } from "react";
 import Layout from "../../components/layout/Layout";
 import CardShopping from "../../components/cards/CardShopping";
 import ICard, { PizzaSize, TypeCard } from "../../components/cards/Card.interface";
-
-import data from "../../data.json";
+import { useAppDispatch, useAppSelector } from "../../redux-toolkit/hooks";
 import { CartStyles } from "./CartStyles";
 import PizzaSVG from "../../assets/SVG/pizza";
 import Button from "../../components/button/Button";
 import { ButtonColor } from "../../components/button/Button.interface";
 import Divider from "../../components/divider/Divider";
 import { DividerColor } from "../../components/divider/Divider.interface";
+import { RootState } from "../../redux-toolkit/store";
+import CartSVG from "../../assets/SVG/cart";
 
 const Cart: FC = (): ReactElement => {
+  const { items } = useAppSelector((state: RootState) => state.cart);
+
+  const dispatch = useAppDispatch();
+
+  console.log(items);
+
   return (
     <Layout>
       <CartStyles>
         <div className="cart">
           <ul className="cart__list">
             <li className="cart__list--item">
-              {data &&
-                data.map((item: ICard, i) => (
+              {items && items.length === 0 && (
+                <div className="cart__list--item__empty">
+                  <h2>Your cart is empty</h2>
+                  <CartSVG fill={"rgba(0, 0, 0, 0.7)"} />
+                </div>
+              )}
+              {items &&
+                items.map((item: ICard, i) => (
                   <CardShopping
                     key={i}
+                    id={item.id}
                     img={item.img}
                     name={item.name}
+                    listNumber={item.listNumber}
                     type={TypeCard.shop}
                     size={PizzaSize.small}
                     ingredients={item.ingredients}
@@ -36,7 +51,7 @@ const Cart: FC = (): ReactElement => {
             <div className="cart__total">
               <div className="cart__total--pizza">
                 <PizzaSVG fill="#333333" />
-                <h3 className="black-border">x6</h3>
+                <h3 className="black-border">x{items.length}</h3>
               </div>
               <div className="cart__total--price">
                 <Button color={ButtonColor.red}>

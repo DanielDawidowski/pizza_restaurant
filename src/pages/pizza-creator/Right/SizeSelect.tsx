@@ -2,20 +2,22 @@ import React, { FC, ReactElement, useState } from "react";
 
 export interface SelectNode {
   id: number;
-  size?: string;
-  diameter?: number;
-  price?: number;
+  size: string;
+  diameter: number;
+  price: number;
 }
 
 interface SelectProps {
   data: SelectNode[];
+  setSizePrice: (price: number) => void;
 }
 
-const SizeSelect: FC<SelectProps> = ({ data }): ReactElement => {
+const SizeSelect: FC<SelectProps> = ({ data, setSizePrice }): ReactElement => {
   const [selectedNode, setSelectedNode] = useState<number | null>(null);
 
-  const handleNodeClick = (id: number): void => {
+  const handleNodeClick = (id: number, price: number): void => {
     setSelectedNode(id);
+    setSizePrice(price);
   };
 
   return (
@@ -28,7 +30,7 @@ const SizeSelect: FC<SelectProps> = ({ data }): ReactElement => {
           <li
             key={node.id}
             className="creator__right--sizes__item"
-            onClick={() => handleNodeClick(node.id)}
+            onClick={() => handleNodeClick(node.id, node.price)}
             style={{ background: selectedNode === node.id ? "rgba(252, 242, 118, 0.8)" : "#ffffff" }}
           >
             <h5 className="creator__right--sizes__item--top">

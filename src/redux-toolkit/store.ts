@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import ingredientReducer from "./reducers/ingredient";
+import cartReducer from "./reducers/cart";
 // ...
 
 export const store = configureStore({
   reducer: {
-    ingredients: ingredientReducer
+    ingredients: ingredientReducer,
+    cart: cartReducer
   }
 });
 
