@@ -50,6 +50,9 @@ export const CartStyles = styled(motion.section)`
           align-items: center;
           min-width: 130px;
           max-width: 230px;
+          h3 {
+            margin-left: ${(props) => props.theme.size1};
+          }
         }
       }
     }

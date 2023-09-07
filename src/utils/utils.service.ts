@@ -1,3 +1,4 @@
+import ICard from "../components/cards/Card.interface";
 import { IngredientProps } from "../redux-toolkit/reducers/ingredient";
 
 export function discountPrice(price: number): number {
@@ -74,4 +75,10 @@ export const generateString = (length: number): string => {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   return result;
+};
+
+export const countTotalPriceInCart = (arr: ICard[]): number => {
+  let result = 0;
+  result = arr.reduce((acc: number, item: ICard) => acc + (item.price as number), 0);
+  return result.toFixed(2) as unknown as number;
 };

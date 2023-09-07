@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useState } from "react";
+import React, { FC, ReactElement } from "react";
 
 export interface SelectNode {
   id: number;
@@ -10,14 +10,22 @@ export interface SelectNode {
 interface SelectProps {
   data: SelectNode[];
   setSizePrice: (price: number) => void;
+  setPizzaSize: (size: string) => void;
+  setSelectedNode: (id: number) => void;
+  selectedNode: number | null;
 }
 
-const SizeSelect: FC<SelectProps> = ({ data, setSizePrice }): ReactElement => {
-  const [selectedNode, setSelectedNode] = useState<number | null>(null);
-
-  const handleNodeClick = (id: number, price: number): void => {
+const SizeSelect: FC<SelectProps> = ({
+  data,
+  setSizePrice,
+  setPizzaSize,
+  setSelectedNode,
+  selectedNode
+}): ReactElement => {
+  const handleNodeClick = (id: number, price: number, pizzaSize: string): void => {
     setSelectedNode(id);
     setSizePrice(price);
+    setPizzaSize(pizzaSize);
   };
 
   return (
@@ -30,7 +38,7 @@ const SizeSelect: FC<SelectProps> = ({ data, setSizePrice }): ReactElement => {
           <li
             key={node.id}
             className="creator__right--sizes__item"
-            onClick={() => handleNodeClick(node.id, node.price)}
+            onClick={() => handleNodeClick(node.id, node.price, node.size)}
             style={{ background: selectedNode === node.id ? "rgba(252, 242, 118, 0.8)" : "#ffffff" }}
           >
             <h5 className="creator__right--sizes__item--top">

@@ -147,6 +147,8 @@ const TYPE = {
       &--select {
         display: grid;
         margin-top: ${(props) => props.theme.size1};
+        border-radius: 18px;
+        padding: 4px;
         &--item {
           display: flex;
           justify-content: flex-start;
@@ -158,8 +160,19 @@ const TYPE = {
 
           input {
             margin: 4px;
+            &:checked + label {
+              color: ${(props) => props.theme.green};
+              letter-spacing: 0.5px;
+              font-weight: 600;
+            }
+            &:checked + .card__body--select--item {
+              border: 1px solid ${(props) => props.theme.black_opacity};
+              background: ${(props) => props.theme.yellow};
+            }
           }
           label {
+            display: flex;
+            justify-content: center;
           }
           .card__body--select--item + input[type="radio"]:checked {
             background: ${(props) => props.theme.white};

@@ -1,24 +1,27 @@
-import React, { FC, ReactElement, useState } from "react";
+import React, { ChangeEvent, FC, ReactElement, useState } from "react";
 import PropTypes from "prop-types";
-import { PizzaSize, TypeCard } from "./Card.interface";
+import { AnimatePresence, motion } from "framer-motion";
+import { TypeCard } from "./Card.interface";
 import ICard from "./Card.interface";
 import { CardStyles } from "./CardStyles";
 import Image from "../image/Image";
 import DotsSVG from "../../assets/SVG/dots";
 import QoutesSVG from "../../assets/SVG/qoutes";
-import EyeSVG from "../../assets/SVG/eye";
 import CartSVG from "../../assets/SVG/cart";
 import PepperSVG from "../../assets/SVG/pepper";
 import StarSVG from "../../assets/SVG/star";
 import VegeSVG from "../../assets/SVG/vege";
 import { useAppDispatch } from "../../redux-toolkit/hooks";
 import { addPizzaToCart } from "../../redux-toolkit/reducers/cart";
+import { generateString } from "../../utils/utils.service";
 
 const Card: FC<ICard> = (props): ReactElement => {
-  const [toggle, setToggle] = useState(false);
-  // const [localStorage, setLocalStorage] = useLocalStorage("cart", list);
+  const [toggle, setToggle] = useState<boolean>(false);
+  const [red, setRed] = useState<boolean>(false);
+  const [id, setId] = useState<string>(generateString(10));
+  const [size, setSize] = useState<string>("");
 
-  const { id, name, listNumber, ingredients, kind, img, type, price } = props;
+  const { name, listNumber, ingredients, kind, img, type, price } = props;
 
   const item: ICard = {
     id,
@@ -27,19 +30,30 @@ const Card: FC<ICard> = (props): ReactElement => {
     ingredients,
     kind,
     img,
-    size: PizzaSize.small,
+    size,
     price
   };
 
   const dispatch = useAppDispatch();
 
   const addToCart = (el: ICard): void => {
-    dispatch(addPizzaToCart(el));
-    // setLocalStorage([{ name, listNumber, ingredients, kind, img, type }]);
+    if (toggle && !size) {
+      setRed(true);
+    } else {
+      dispatch(addPizzaToCart(el));
+      setId(generateString(10));
+      setToggle(false);
+      setSize("");
+    }
   };
 
   const handleToggle = (): void => {
-    setToggle(!toggle);
+    setToggle(true);
+  };
+
+  const handleSize = (e: ChangeEvent<HTMLInputElement>): void => {
+    setSize(e.target.id);
+    setRed(e.target.id ? false : true);
   };
 
   return (
@@ -60,30 +74,57 @@ const Card: FC<ICard> = (props): ReactElement => {
           <div className="card__body--ingredients">
             {ingredients && ingredients.map((el, i) => <h6 key={i}>{el},</h6>)}
           </div>
-          {toggle && (
-            <div className="card__body--select">
-              <div className="card__body--select--item">
-                <input id="small" name="size" type="radio" />
-                <label htmlFor="small">Small</label>
-              </div>
-              <div className="card__body--select--item">
-                <input id="medium" name="size" type="radio" />
-                <label htmlFor="medium">Medium</label>
-              </div>
-              <div className="card__body--select--item">
-                <input id="large" name="size" type="radio" />
-                <label htmlFor="large">Large</label>
-              </div>
-            </div>
-          )}
+          <AnimatePresence>
+            {toggle && (
+              <motion.div
+                className="card__body--select"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: toggle ? 100 : 0, opacity: 1, transition: { duration: 0.8 } }}
+                exit={{ height: !toggle ? 100 : 0, opacity: 0, transition: { duration: 0.5 } }}
+              >
+                <motion.div
+                  className="card__body--select--item"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1, transition: { duration: 1.4 } }}
+                  exit={{ opacity: 0, transition: { duration: 0.2 } }}
+                  style={{ borderColor: red ? "red" : "black", color: red ? "red" : "black" }}
+                >
+                  <input id="small" name="size" type="radio" onChange={handleSize} />
+                  <label htmlFor="small">Small {price}$</label>
+                </motion.div>
+                <motion.div
+                  className="card__body--select--item"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1, transition: { duration: 1.4 } }}
+                  exit={{ opacity: 0, transition: { duration: 0.2 } }}
+                  style={{ borderColor: red ? "red" : "black", color: red ? "red" : "black" }}
+                >
+                  <input id="medium" name="size" type="radio" onChange={handleSize} />
+                  <label htmlFor="medium">Medium {((price as number) + 4).toFixed(2)}$</label>
+                </motion.div>
+                <motion.div
+                  className="card__body--select--item"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1, transition: { duration: 1.4 } }}
+                  exit={{ opacity: 0, transition: { duration: 0.2 } }}
+                  style={{ borderColor: red ? "red" : "black", color: red ? "red" : "black" }}
+                >
+                  <input id="large" name="size" type="radio" onChange={handleSize} />
+                  <label htmlFor="large">Large {((price as number) + 8).toFixed(2)}$</label>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
           <div className="card__body--footer">
-            <div className="card__body--footer--btn" onClick={handleToggle}>
-              <EyeSVG />
-            </div>
-
-            <div className="card__body--footer--btn" onClick={() => addToCart(item)}>
-              <CartSVG />
-            </div>
+            {!toggle ? (
+              <div className="card__body--footer--btn" onClick={() => handleToggle()}>
+                <CartSVG />
+              </div>
+            ) : (
+              <div className="card__body--footer--btn" onClick={() => addToCart(item)}>
+                <CartSVG />
+              </div>
+            )}
 
             {kind === "vege" && (
               <div className="card__body--footer--kind">
@@ -116,7 +157,7 @@ Card.propTypes = {
   listNumber: PropTypes.number,
   ingredients: PropTypes.array,
   price: PropTypes.number,
-  size: PropTypes.oneOf([PizzaSize.small, PizzaSize.medium, PizzaSize.large]),
+  size: PropTypes.string,
   img: PropTypes.string,
   kind: PropTypes.string,
   type: PropTypes.oneOf([TypeCard.discount, TypeCard.list, TypeCard.shop])

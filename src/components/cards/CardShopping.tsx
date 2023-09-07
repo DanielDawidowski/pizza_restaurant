@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from "react";
 import PropTypes from "prop-types";
 import ICard from "./Card.interface";
-import { PizzaSize, TypeCard } from "./Card.interface";
+import { TypeCard } from "./Card.interface";
 import Image from "../image/Image";
 import { CardStyles } from "./CardStyles";
 import BinSVG from "../../assets/SVG/bin";
@@ -13,6 +13,7 @@ import Button from "../button/Button";
 import { ButtonColor } from "../button/Button.interface";
 import { useAppDispatch } from "../../redux-toolkit/hooks";
 import { removePizzaFromCart } from "../../redux-toolkit/reducers/cart";
+import { emitPizzaSize } from "../../utils/emitPizzaSize";
 
 const CardShopping: FC<ICard> = (props): ReactElement => {
   const { name, size, price, id, ingredients, kind, img, type } = props;
@@ -31,7 +32,9 @@ const CardShopping: FC<ICard> = (props): ReactElement => {
         <div className="card__right--header">
           <div className="card__right--header__title">
             <h4>{name}</h4>
-            <h5>{size} - 24 cm</h5>
+            <h5>
+              {size?.toUpperCase()} - {emitPizzaSize(size?.toLowerCase() as string)}
+            </h5>
           </div>
 
           <div className="card__right--header__bin" onClick={() => dispatch(removePizzaFromCart(id as string))}>
@@ -68,7 +71,7 @@ const CardShopping: FC<ICard> = (props): ReactElement => {
               </div>
             )}
             <Button color={ButtonColor.secondary} disabled>
-              {price}
+              {price} $
             </Button>
           </div>
         </div>
@@ -83,7 +86,7 @@ CardShopping.propTypes = {
   ingredients: PropTypes.array,
   price: PropTypes.number,
   listNumber: PropTypes.number,
-  size: PropTypes.oneOf([PizzaSize.small, PizzaSize.medium, PizzaSize.large]),
+  size: PropTypes.string,
   img: PropTypes.string,
   kind: PropTypes.string,
   type: PropTypes.oneOf([TypeCard.discount, TypeCard.list, TypeCard.shop])

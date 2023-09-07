@@ -38,10 +38,10 @@ const Navigation: FC<IHamburger> = (props): ReactElement => {
               <ul>
                 <li>
                   <Link to="/cart">
-                    <div className="header__cart">
-                      <div className="header__cart--icon">
+                    <div className="nav__cart">
+                      <div className="nav__cart--icon">
                         <BasketSVG />
-                        <span>{items.length}</span>
+                        {items.length !== 0 ? <span>{items.length}</span> : null}
                       </div>
                     </div>
                   </Link>

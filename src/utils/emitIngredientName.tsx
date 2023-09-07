@@ -1,7 +1,6 @@
-import { ReactNode } from "react";
 import { IngredientName, IngredientNames } from "../components/ingredient/Ingredient.interface";
 
-export const emitIngredientName = (name: IngredientNames): ReactNode => {
+export const emitIngredientName = (name: IngredientNames): string => {
   switch (name) {
     case IngredientName.paprika:
       return "Paprika";

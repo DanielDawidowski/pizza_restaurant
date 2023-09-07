@@ -41,6 +41,11 @@ export const ingredientSlice = createSlice({
       state.price = state.total * 3;
       console.log("list: ", state.ingredient);
     },
+    clearIngredient: (state) => {
+      state.ingredient = [];
+      state.total = 0;
+      state.price = 0;
+    },
 
     // Use the PayloadAction type to declare the contents of `action.payload`
     incrementByAmount: (state, action: PayloadAction<number>) => {
@@ -49,6 +54,6 @@ export const ingredientSlice = createSlice({
   }
 });
 
-export const { increment, decrement, incrementByAmount } = ingredientSlice.actions;
+export const { increment, decrement, incrementByAmount, clearIngredient } = ingredientSlice.actions;
 
 export default ingredientSlice.reducer;

@@ -1,7 +1,7 @@
-import React, { FC, ReactElement, useEffect } from "react";
+import React, { FC, ReactElement } from "react";
 import Layout from "../../components/layout/Layout";
 import CardShopping from "../../components/cards/CardShopping";
-import ICard, { PizzaSize, TypeCard } from "../../components/cards/Card.interface";
+import ICard, { TypeCard } from "../../components/cards/Card.interface";
 import { useAppDispatch, useAppSelector } from "../../redux-toolkit/hooks";
 import { CartStyles } from "./CartStyles";
 import PizzaSVG from "../../assets/SVG/pizza";
@@ -11,6 +11,7 @@ import Divider from "../../components/divider/Divider";
 import { DividerColor } from "../../components/divider/Divider.interface";
 import { RootState } from "../../redux-toolkit/store";
 import CartSVG from "../../assets/SVG/cart";
+import { countTotalPriceInCart } from "../../utils/utils.service";
 
 const Cart: FC = (): ReactElement => {
   const { items } = useAppSelector((state: RootState) => state.cart);
@@ -40,7 +41,7 @@ const Cart: FC = (): ReactElement => {
                     name={item.name}
                     listNumber={item.listNumber}
                     type={TypeCard.shop}
-                    size={PizzaSize.small}
+                    size={item.size}
                     ingredients={item.ingredients}
                     kind={item.kind}
                     price={item.price}
@@ -55,7 +56,7 @@ const Cart: FC = (): ReactElement => {
               </div>
               <div className="cart__total--price">
                 <Button color={ButtonColor.red}>
-                  Price: <h3 className="yellow-border">80 $</h3>
+                  Price: <h3 className="yellow-border">{countTotalPriceInCart(items)} $</h3>
                 </Button>
               </div>
             </div>
