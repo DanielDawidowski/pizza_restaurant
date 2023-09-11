@@ -71,7 +71,7 @@ const CardShopping: FC<ICard> = (props): ReactElement => {
               </div>
             )}
             <Button color={ButtonColor.secondary} disabled>
-              {price} $
+              {(price as number).toFixed(2)} $
             </Button>
           </div>
         </div>

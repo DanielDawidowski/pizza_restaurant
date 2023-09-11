@@ -5,6 +5,9 @@ import Home from "./pages/home/Home";
 import Menu from "./pages/menu/Menu";
 import PizzaCreator from "./pages/pizza-creator/PizzaCreator";
 import Cart from "./pages/cart/Cart";
+import Checkout from "./pages/checkout/Checkout";
+import Success from "./pages/checkout/Success";
+import Cancel from "./pages/checkout/Cancel";
 
 export const AppRouter: FC = () => {
   const elements: RouteObject[] = [
@@ -23,6 +26,18 @@ export const AppRouter: FC = () => {
     {
       path: "/cart",
       element: <Cart />
+    },
+    {
+      path: "/checkout",
+      element: <Checkout />
+    },
+    {
+      path: "/success",
+      element: <Success />
+    },
+    {
+      path: "/cancel",
+      element: <Cancel />
     }
     // {
     //     path: "/:pathMatch(.*)*",

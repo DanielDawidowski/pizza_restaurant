@@ -31,10 +31,14 @@ export const cartSlice = createSlice({
       const itemId = action.payload;
       state.items = state.items.filter((item) => item.id !== itemId);
       localStorage.setItem("cart", JSON.stringify(state.items));
+    },
+    clearCart: (state) => {
+      state.items = [];
+      localStorage.setItem("cart", JSON.stringify(state.items));
     }
   }
 });
 
-export const { addPizzaToCart, removePizzaFromCart } = cartSlice.actions;
+export const { addPizzaToCart, removePizzaFromCart, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

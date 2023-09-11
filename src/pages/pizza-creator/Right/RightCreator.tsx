@@ -47,10 +47,11 @@ const RightCreator: FC = (): ReactElement => {
   };
 
   const pizza: ICard = {
-    id: generateString(10),
-    name: "Own Mode Pizza",
+    id: "price_1Np8X8EKmvcjX3nfXdXHtbMg",
+    name: "Own Made Pizza",
     ingredients: setNameIngredients(ingredient),
     price: showPrice(),
+    quantity: 1,
     size: pizzaSize.toUpperCase() as PizzaSizes,
     img: "https://i.ibb.co/cTRfstF/elczan-pizza-four-cheese-photo-from-top-all-width-visible-4k-ul-be410a24-b86f-4254-843e-90d3132b48af.png"
   };

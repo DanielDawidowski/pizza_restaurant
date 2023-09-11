@@ -1,5 +1,6 @@
 [
   {
+    "id": "price_1Np4cnEKmvcjX3nfy6bqFdXT",
     "listNumber": 1,
     "name": "Vegetarian",
     "price": 8.99,
@@ -9,6 +10,7 @@
     "ingredients": ["spinach", "tomato", "onion", "cucumber"]
   },
   {
+    "id": "price_1Np4h6EKmvcjX3nfykaopTmL",
     "listNumber": 2,
     "name": "Funghi",
     "price": 9.99,
@@ -18,6 +20,7 @@
     "ingredients": ["champignon", "basil"]
   },
   {
+    "id": "price_1Np4iTEKmvcjX3nf3oMmbdyd",
     "listNumber": 3,
     "name": "Creamy Bacon",
     "price": 10.99,
@@ -27,6 +30,7 @@
     "ingredients": ["bacon", "cream cheese", "onion"]
   },
   {
+    "id": "price_1Np6FfEKmvcjX3nfExxZHibR",
     "listNumber": 4,
     "name": "Meat Lover",
     "price": 11.99,
@@ -36,6 +40,7 @@
     "ingredients": ["bacon", "ham", "pepperoni", "paprika"]
   },
   {
+    "id": "price_1Np6H4EKmvcjX3nfjzxofEXY",
     "listNumber": 5,
     "name": "Farmer",
     "price": 11.99,
@@ -45,15 +50,17 @@
     "ingredients": ["bacon", "ham", "cucumber", "onion"]
   },
   {
+    "id": "price_1Np6IZEKmvcjX3nfMq7sdJ5x",
     "listNumber": 6,
     "name": "Hawaiian",
-    "price": 10.99,
+    "price": 11.99,
     "discount": 10.99,
     "kind": "",
     "img": "https://i.ibb.co/bdJZLz4/elczan-pizza-hawai-photo-from-top-all-width-visible-4k-ultra-re-75e74729-1935-44d3-9786-73dc83729e1e.png",
     "ingredients": ["pineapple", "ham", "onion"]
   },
   {
+    "id": "price_1Np6JWEKmvcjX3nfLSBEk7h6",
     "listNumber": 7,
     "name": "Barbecue Mix Grill",
     "price": 12.99,
@@ -63,6 +70,7 @@
     "ingredients": ["pepperoni", "tomato", "ham", "red onion", "basil", "barbecue sauce"]
   },
   {
+    "id": "price_1Np6K8EKmvcjX3nfftIbDU6k",
     "listNumber": 8,
     "name": "Pepperoni",
     "price": 11.99,
@@ -72,6 +80,7 @@
     "ingredients": ["pepperoni", "basil"]
   },
   {
+    "id": "price_1Np6LCEKmvcjX3nfCIEOoQFu",
     "listNumber": 9,
     "name": "Funghi Ham",
     "price": 11.99,
@@ -81,6 +90,7 @@
     "ingredients": ["champignon", "ham", "basil"]
   },
   {
+    "id": "price_1Np6LzEKmvcjX3nfekJDrv7p",
     "listNumber": 10,
     "name": "Four Cheese",
     "price": 11.99,

@@ -6,10 +6,9 @@ import RightCreator from "./Right/RightCreator";
 import Loader from "../../components/loader/Loader";
 
 const PizzaCreator: FC = (): ReactElement => {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 4000);

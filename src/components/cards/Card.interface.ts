@@ -34,6 +34,7 @@ export default interface ICard {
   id?: string;
   name?: string;
   listNumber?: number;
+  quantity?: number;
   ingredients?: string[];
   price?: number;
   size?: string;

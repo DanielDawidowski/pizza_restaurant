@@ -13,25 +13,24 @@ import StarSVG from "../../assets/SVG/star";
 import VegeSVG from "../../assets/SVG/vege";
 import { useAppDispatch } from "../../redux-toolkit/hooks";
 import { addPizzaToCart } from "../../redux-toolkit/reducers/cart";
-import { generateString } from "../../utils/utils.service";
 
 const Card: FC<ICard> = (props): ReactElement => {
   const [toggle, setToggle] = useState<boolean>(false);
   const [red, setRed] = useState<boolean>(false);
-  const [id, setId] = useState<string>(generateString(10));
   const [size, setSize] = useState<string>("");
 
-  const { name, listNumber, ingredients, kind, img, type, price } = props;
+  const { name, id, listNumber, ingredients, kind, img, type, price } = props;
 
   const item: ICard = {
     id,
     name,
     listNumber,
+    quantity: 1,
     ingredients,
     kind,
     img,
     size,
-    price
+    price: size === "small" ? price : size === "medium" ? (price as number) + 4 : (price as number) + 8
   };
 
   const dispatch = useAppDispatch();
@@ -41,7 +40,6 @@ const Card: FC<ICard> = (props): ReactElement => {
       setRed(true);
     } else {
       dispatch(addPizzaToCart(el));
-      setId(generateString(10));
       setToggle(false);
       setSize("");
     }
@@ -155,6 +153,7 @@ Card.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   listNumber: PropTypes.number,
+  quantity: PropTypes.number,
   ingredients: PropTypes.array,
   price: PropTypes.number,
   size: PropTypes.string,

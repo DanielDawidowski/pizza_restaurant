@@ -35,7 +35,7 @@ const Menu: FC = (): ReactElement => {
             data.map((item: ICard, i) => (
               <Card
                 key={i}
-                id={generateString(10)}
+                id={item.id}
                 name={item.name}
                 listNumber={item.listNumber}
                 img={item.img}
