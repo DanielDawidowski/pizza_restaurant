@@ -1,4 +1,5 @@
 import React, { FC, ReactElement } from "react";
+import { useNavigate } from "react-router-dom";
 import Layout from "../../components/layout/Layout";
 import CardShopping from "../../components/cards/CardShopping";
 import ICard, { TypeCard } from "../../components/cards/Card.interface";
@@ -17,24 +18,9 @@ import { countTotalPriceInCart } from "../../utils/utils.service";
 const Cart: FC = (): ReactElement => {
   const { items } = useAppSelector((state: RootState) => state.cart);
 
+  const navigate = useNavigate();
   const checkout = async (): Promise<void> => {
-    await fetch("http://localhost:4000/checkout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        items: items
-      })
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((response) => {
-        if (response.url) {
-          window.location.assign(response.url); // Forwarding user to Stripe
-        }
-      });
+    navigate("/success");
   };
 
   return (
