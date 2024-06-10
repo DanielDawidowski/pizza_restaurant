@@ -4,7 +4,7 @@ import ICard from "../../components/cards/Card.interface";
 
 type ICartShoppping = Omit<ICard, "type">;
 
-interface CartState {
+export interface CartState {
   items: ICartShoppping[];
 }
 

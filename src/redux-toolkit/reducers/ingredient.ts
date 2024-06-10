@@ -42,6 +42,7 @@ export const ingredientSlice = createSlice({
       console.log("list: ", state.ingredient);
     },
     clearIngredient: (state) => {
+      list.splice(0, list.length);
       state.ingredient = [];
       state.total = 0;
       state.price = 0;

@@ -1,6 +1,15 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { motion } from "framer-motion";
 import CreateBG from "../../assets/Images/create-bg.jpg";
+
+export const bg = keyframes`
+   0%, 100% {
+    width: -100%;
+  }
+  25%, 75% {
+    width: 100%;
+  }
+`;
 
 export const PizzaCreatorStyles = styled(motion.section)`
   .creator {
@@ -83,12 +92,33 @@ export const PizzaCreatorStyles = styled(motion.section)`
         background: ${(props) => props.theme.white_2};
         border-radius: ${(props) => props.theme.size1};
         border: 1px solid ${(props) => props.theme.black};
+        &.info {
+          position: relative;
+          overflow: hidden;
+          z-index: 1;
+          border: 1px solid ${(props) => props.theme.red};
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            z-index: -1;
+            transition: background-size 0.3s ease-in-out;
+            background: ${(props) => props.theme.red};
+            animation: ${bg} 0.8s linear forwards;
+          }
+        }
       }
       &--title {
         display: grid;
         place-items: center;
+        z-index: 9;
       }
       &--sizes {
+        z-index: 9;
         margin: ${(props) => props.theme.size1};
         display: flex;
         justify-content: space-between;

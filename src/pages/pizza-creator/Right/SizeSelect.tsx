@@ -13,6 +13,7 @@ interface SelectProps {
   setPizzaSize: (size: string) => void;
   setSelectedNode: (id: number) => void;
   selectedNode: number | null;
+  info: boolean;
 }
 
 const SizeSelect: FC<SelectProps> = ({
@@ -20,7 +21,8 @@ const SizeSelect: FC<SelectProps> = ({
   setSizePrice,
   setPizzaSize,
   setSelectedNode,
-  selectedNode
+  selectedNode,
+  info
 }): ReactElement => {
   const handleNodeClick = (id: number, price: number, pizzaSize: string): void => {
     setSelectedNode(id);
@@ -29,9 +31,9 @@ const SizeSelect: FC<SelectProps> = ({
   };
 
   return (
-    <div className="creator__right--size">
+    <div className={`creator__right--size ${info ? "info" : ""}`}>
       <div className="creator__right--title">
-        <h3>size</h3>
+        <h3>{`${info ? "Pick size" : "size"}`}</h3>
       </div>
       <ul className="creator__right--sizes">
         {data.map((node: SelectNode) => (

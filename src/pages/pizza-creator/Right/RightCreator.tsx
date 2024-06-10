@@ -35,8 +35,9 @@ const RightCreator: FC = (): ReactElement => {
   const [ingName, setIngName] = useState<string[]>([]);
   const [sizePrice, setSizePrice] = useState<number>(0);
   const [pizzaSize, setPizzaSize] = useState<string>("");
-  const { ingredient, price } = useAppSelector((state) => state.ingredients);
+  const { ingredient, price, total } = useAppSelector((state) => state.ingredients);
   const [selectedNode, setSelectedNode] = useState<number | null>(null);
+  const [info, setInfo] = useState<boolean>(false);
 
   const setNameIngredients = (arr: IngredientProps[]): string[] => {
     return arr.map((item: IngredientProps) => item.name);
@@ -47,7 +48,7 @@ const RightCreator: FC = (): ReactElement => {
   };
 
   const pizza: ICard = {
-    id: "price_1Np8X8EKmvcjX3nfXdXHtbMg",
+    id: `price_${generateString(24)}`,
     name: "Own Made Pizza",
     ingredients: setNameIngredients(ingredient),
     price: showPrice(),
@@ -59,9 +60,17 @@ const RightCreator: FC = (): ReactElement => {
   const dispatch = useAppDispatch();
 
   const addToCart = (el: ICard): void => {
-    dispatch(addPizzaToCart(el));
-    setSelectedNode(null);
-    dispatch(clearIngredient());
+    if (sizePrice < 1) {
+      setInfo(true);
+    }
+    if (sizePrice > 0 && ingName.length > 0) {
+      dispatch(addPizzaToCart(el));
+      setSelectedNode(null);
+      dispatch(clearIngredient());
+      setIngName([]);
+      setSizePrice(0);
+      setInfo(false);
+    }
   };
 
   const showIngredient = useCallback((): void => {
@@ -83,6 +92,14 @@ const RightCreator: FC = (): ReactElement => {
     showIngredient();
   }, [showIngredient]);
 
+  useEffect(() => {
+    console.log("ingredient", ingredient);
+    console.log("ingName", ingName);
+    console.log("info", info);
+    console.log("total", total);
+    console.log("sizePrice", sizePrice);
+  }, [ingredient, info, total, sizePrice]);
+
   return (
     <div className="creator__right">
       <div className="creator__right--inner">
@@ -92,6 +109,7 @@ const RightCreator: FC = (): ReactElement => {
           setPizzaSize={setPizzaSize}
           selectedNode={selectedNode}
           setSelectedNode={setSelectedNode}
+          info={info}
         />
         <div className="creator__right--pizza">
           <PizzaWithPlateSVG
@@ -108,9 +126,7 @@ const RightCreator: FC = (): ReactElement => {
           <h3>
             Total: <span className="black-border">{showPrice()}$</span>
           </h3>
-          <Button disabled={!sizePrice || !ingName.length} onClick={() => addToCart(pizza)}>
-            +
-          </Button>
+          <Button onClick={() => addToCart(pizza)}>+</Button>
         </div>
       </div>
     </div>
