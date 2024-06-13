@@ -38,7 +38,7 @@ A mobile-only web application for creating custom pizzas and finalizing payments
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/pizza-ordering-app.git
+    git clone https://github.com/DanielDawidowski/pizza_restaurant
     cd pizza-ordering-app
     ```
 
